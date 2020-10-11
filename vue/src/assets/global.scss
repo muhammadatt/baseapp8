@@ -1,0 +1,217 @@
+@import '~normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+$primary-red: #eb5a46;
+$primary-green: #22b958;
+$primary-blue: #76aee2;
+
+body {
+  /* font-family: "Avenir", Helvetica, Arial, sans-serif; */
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  padding: 0em;
+  margin: 0em;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #f4f4f5;
+}
+
+a {
+  color: rgb(66, 133, 233);
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: rgb(0, 82, 204);
+  text-decoration: underline;
+}
+
+.pseudo-link {
+  @extend a;
+  cursor: pointer;
+}
+
+/**
+  *
+  * FORM STYLES
+  *
+  **/
+.form-card {
+
+  padding: 20px;
+  border-radius: 5px;
+  background: white;
+  min-height: 200px;
+  box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.3),
+    1px 1px 20px 14px rgba(0, 0, 0, 0.15);
+
+  .card-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-size: 17px;
+    font-weight: bold;
+    background: #e7e9e7;
+    border-radius: 5px 5px 0 0;
+    color: rgb(90, 86, 86);
+  }
+
+  .form-title{
+    font-weight: bold;
+    font-size: 16px;
+    margin: 20px 0 10px 0;
+    color: #4e5a6b;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+  }
+
+  .form-body {
+    padding: 20px 40px;
+    justify-content: space-around;
+
+    p {
+      padding: 5px 0px;
+      color: #576366;
+      font-size: 12px;
+      margin: 10px auto 0 auto;
+    }
+
+    button.submit {
+      background: #22b958;
+      width: 100%;
+    }
+  }
+
+  .rule {
+    height: 2px;
+    background: #e8ebed;
+    margin: 0px 35px;
+  }
+
+  .card-footer {
+    margin: 0 25px 15px 25px;
+    padding: 15px 10px;
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  appearance: none;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 45px;
+  padding: 5px 15px;
+  border-radius: 3px;
+  outline: none;
+  border: 2px solid #dbe2ef;
+  background: #e8f0fe;
+  color: #333333;
+  font-size: 14px;
+}
+
+input:focus {
+  background-color: white;
+  border: 2px solid rgb(76, 154, 255);
+}
+
+label {
+  appearance: none;
+  margin-left: 1px;
+  font-size: 15px;
+  color: #696565;
+  margin-bottom: 5px;
+  display: block;
+}
+
+button,
+a.button {
+  appearance: none;
+
+  margin: 10px 0 0 0;
+  height: 35px;
+  background: #76aee2;
+  border-radius: 3px;
+  display: inline-block;
+  border: 0;
+  outline: 0;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 5px;
+  position: relative;
+  text-decoration: none;
+  border: 0px;
+  color: white;
+  font-size: 16px;
+  min-width: 80px;
+}
+
+a.button {
+}
+
+a.small-link {
+  font-size: 13px;
+}
+
+.button:hover,
+button:hover {
+  cursor: pointer;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(173, 170, 170);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgb(173, 170, 170);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgb(173, 170, 170);
+}
+
+/* Super Simple CSS Spinner courtesy of https://codepen.io/mandelid/pen/vwKoe */
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 0.3s ease-in-out infinite;
+  -webkit-animation: spin 0.3s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+h1 {
+  margin-top: 0;
+}
