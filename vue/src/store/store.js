@@ -1,15 +1,22 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import * as user from "@/store/user.js";
+import auth from "@/store/auth-sanctum";
+//import * as user from "@/store/auth-passport.js";
 import * as notification from "@/store/notification.js";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    user, notification
+    notification,
+    auth
   },
   state: {},
   mutations: {},
-  actions: {}
+  actions: {},
+  getters: {
+  }
+  
+  
+
 });

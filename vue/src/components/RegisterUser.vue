@@ -96,7 +96,7 @@ export default {
         //if passes client validation, submit to server
         this.isLoading = true;
         this.$store
-          .dispatch("register", {
+          .dispatch("auth/register", {
             name: this.name,
             email: this.email,
             password: this.password

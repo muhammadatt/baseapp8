@@ -30,7 +30,7 @@ export default {
 
       for (const messages of values) {
         //Fix for error messages returned as comma separated strings
-        let messages_array = messages.myString().split(",");
+        let messages_array = messages.split(",");
 
         for (const message of messages_array) {
           errors.push(message);

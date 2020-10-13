@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/user', function (Request $request) {
+    return $request->user();
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

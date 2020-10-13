@@ -35,7 +35,7 @@ export default {
     NProgress.configure({ parent: '#page' });
     NProgress.start();
     axios
-      .get("http://localhost/baseapp/laravel/public/api/events/get-details")
+      .get("api/events/get-details")
       .then(({ data }) => {
         this.events = data.success;
         this.isLoading = false;

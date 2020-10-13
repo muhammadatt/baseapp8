@@ -8,6 +8,7 @@ import PwdResetForm from "@/components/PwdResetForm"
 import ForgotPassword from "@/components/ForgotPassword"
 import Error404 from '@/views/404.vue'
 import Assets from '@/components/Assets'
+
 //import NProgress from 'nprogress'
 
 Vue.use(VueRouter);

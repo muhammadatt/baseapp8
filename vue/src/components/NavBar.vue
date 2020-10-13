@@ -6,7 +6,11 @@
     <router-link v-if="loggedIn" :to="{ name: 'dashboard' }">
       Dashboard
     </router-link>
-    <router-link v-if="!loggedIn" :to="{ name: 'user-login' }" class="login-button">
+    <router-link
+      v-if="!loggedIn"
+      :to="{ name: 'user-login' }"
+      class="login-button"
+    >
       <button>Sign In</button>
     </router-link>
     <div v-else class="pseudo-link logout-link" @click="logout">
@@ -16,16 +20,19 @@
 </template>
 
 <script>
-import { authComputed } from "@/store/helpers.js";
+import { authUser } from "@/store/helpers.js";
 export default {
   computed: {
-    //import the loggedIn status from our state helper
-    ...authComputed
+    //import user and loggedIn status from our state helper
+    ...authUser
   },
   methods: {
     logout() {
       this.$store
-        .dispatch("logout")
+        .dispatch("auth/logout")
+        .then(() => {
+          this.$router.push("user/login");
+        })
         .catch(error => {
           console.error(error);
         });
@@ -73,12 +80,10 @@ export default {
   color: white;
 }
 
-#nav a.login-button{
-
+#nav a.login-button {
   margin: auto 0.8em auto auto;
   text-decoration: none;
   border: 0;
-
 }
 #nav button {
   margin: auto;

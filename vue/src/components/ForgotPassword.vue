@@ -68,7 +68,7 @@ export default {
       if (this.validateForm()) {
         this.isLoading = true;
         axios
-          .post("http://localhost/baseapp/laravel/public/api/password/email", {
+          .post("api/password/email", {
             email: this.email
           })
           .then(() => {
@@ -77,7 +77,7 @@ export default {
             this.isLoading = false;
           })
           .catch(err => {
-            //TO DO: Supress error message for email not found, for security reasons
+            //TO DO: Suppress error message for email not found, for security reasons
 
             this.ConsoleLogApiErrors(err);
             this.errors = err.response.data.error;

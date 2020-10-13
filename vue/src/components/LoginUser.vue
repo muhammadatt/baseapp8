@@ -8,7 +8,7 @@
       <div class="form-body">
         <BaseFormErrors :errors="errors" />
 
-        <form @submit.prevent="login" class="register">
+        <form @submit.prevent="submit" class="register">
           <input
             v-model="email"
             type="email"
@@ -77,11 +77,11 @@ export default {
     }
   },
   methods: {
-    login() {
+    async submit() {
       if (this.validateForm()) {
         this.isLoading = true;
         this.$store
-          .dispatch("login", { email: this.email, password: this.password })
+          .dispatch("auth/signIn", { email: this.email, password: this.password })
           .then(() => {
             this.isLoading = false;
             this.$router.push({ name: "dashboard" });

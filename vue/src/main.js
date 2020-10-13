@@ -3,11 +3,14 @@ import App from "./App.vue";
 import router from "@/router/route.js";
 import store from "@/store/store.js";
 import "nprogress/nprogress.css";
-//import axios from "axios";
+import axios from 'axios'
 import DefaultLayout from "@/views/layouts/Default.vue";
 import NoHeaderLayout from "@/views/layouts/NoHeader.vue";
 
 Vue.config.productionTip = false;
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://localhost:8000/';
 
 //Global Registration of Layout files
 Vue.component("default-layout", DefaultLayout);
@@ -30,12 +33,12 @@ new Vue({
   router,
   store,
   created() {
-    const userJSON = localStorage.getItem("user");
+    //const userJSON = sessionStorage.getItem("user");
     //eek, empty user gets actually gets saved in local storage as the string "undefined"
-    if (userJSON && userJSON !== "undefined") {
-      const userObj = JSON.parse(userJSON);
-      this.$store.commit("SET_USER_DATA", userObj);
-    }
+    //if (userJSON && userJSON !== "undefined") {
+    //  const userObj = JSON.parse(userJSON);
+    //  this.$store.commit("SET_USER_DATA", userObj);
+    //}
 
     //This automatically logs a user out our app if they receive a 401 ("Unauthorized") response to any API request.
     //Need to be careful is this is what we want.
