@@ -87,7 +87,7 @@ export default {
       if (this.validateForm()) {
         this.isLoading = true;
         axios
-          .post("http://localhost/baseapp/laravel/public/api/password/reset", {
+          .post("/api/password/reset", {
             password: this.password,
             password_confirmation: this.password_confirmation,
             token: this.$route.params.token,

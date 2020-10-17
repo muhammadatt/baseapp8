@@ -7,7 +7,7 @@ export default {
 
   state: {
     //user: null
-    user: JSON.parse(sessionStorage.getItem(`user`)) || null,
+    user: JSON.parse(localStorage.getItem(`user`)) || null,
   },
 
   getters: {
@@ -25,7 +25,7 @@ export default {
 
     SET_USER(state, userData) {
       state.user = userData;
-      sessionStorage.setItem("user", JSON.stringify(userData));
+      localStorage.setItem("user", JSON.stringify(userData));
     }
   },
 

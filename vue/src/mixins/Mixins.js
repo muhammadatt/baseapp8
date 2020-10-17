@@ -35,7 +35,7 @@ export const ConsoleLogApiErrors = {
 };
 
 export const myString = {
-  filters: {
+  methods: {
     //default toString throws an error on null values, this returns an empty string instead
     myString: function(value) {
       if (!value) return "";

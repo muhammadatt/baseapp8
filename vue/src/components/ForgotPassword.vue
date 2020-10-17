@@ -68,7 +68,7 @@ export default {
       if (this.validateForm()) {
         this.isLoading = true;
         axios
-          .post("api/password/email", {
+          .post("/api/password/email", {
             email: this.email
           })
           .then(() => {

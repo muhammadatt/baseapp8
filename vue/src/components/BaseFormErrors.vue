@@ -24,13 +24,17 @@ export default {
   props: ["errors"],
   computed: {
     /* Function to parse the error messages out of out the nested JSON result */
+
     error_list: function() {
+      
       let errors = [];
       const values = Object.values(this.errors);
+      //console.log("errors: " + values)
 
       for (const messages of values) {
-        //Fix for error messages returned as comma separated strings
-        let messages_array = messages.split(",");
+        //console.log('msg: ' + messages )
+        //Fix for error messages returned as comma separated string
+        let messages_array = this.myString(messages).split(",");
 
         for (const message of messages_array) {
           errors.push(message);

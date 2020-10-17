@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PasswordResetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,13 +34,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
 // Password Reset Routes...
-Route::middleware('auth:sanctum')->group(function () {
-    
-    Route::get('password/reset/{token}', 'ResetPasswordAPIController@showResetForm')->name('password.myreset');
-    Route::post('password/reset', 'ResetPasswordAPIController@reset');
-    Route::post('password/email', 'ForgotPasswordAPIController@sendResetLinkEmail')->name('password.myemail');
-
-});
+Route::post('password/reset', [PasswordResetController::class, 'reset']);
+Route::post('password/email', [PasswordResetController::class, 'sendResetLinkEmail']);
 
 
 
