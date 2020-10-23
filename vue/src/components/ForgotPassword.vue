@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       email: "",
-      errors: [],
+      errors: {},
       isVisible: true,
       isLoading: false
     };
@@ -79,8 +79,8 @@ export default {
           .catch(err => {
             //TO DO: Suppress error message for email not found, for security reasons
 
-            this.ConsoleLogApiErrors(err);
-            this.errors = err.response.data.error;
+            this.ConsoleLogApiErrors(err);            
+            this.errors = err.response.data.error; 
             this.isLoading = false;
           });
       }

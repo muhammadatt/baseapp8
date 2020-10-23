@@ -32,7 +32,7 @@ export default {
       //console.log("errors: " + values)
 
       for (const messages of values) {
-        //console.log('msg: ' + messages )
+        console.log('msg: ' + messages )
         //Fix for error messages returned as comma separated string
         let messages_array = this.myString(messages).split(",");
 

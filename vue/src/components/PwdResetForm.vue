@@ -1,6 +1,8 @@
 <template>
   <div>
     <div class="form-card">
+      
+      <div v-if="formVisible">
       <p class="form-title">Change your password</p>
       <div class="form-body">
         <BaseFormErrors :errors="errors" />
@@ -35,12 +37,28 @@
           </button>
         </form>
       </div>
+
+
+
+
       <div class="rule"></div>
       <div class="card-footer">
         <router-link :to="{ name: 'user-login' }" class="small-link">
           Go to Login Page
         </router-link>
       </div>
+
+            </div>
+     
+      <div v-else>
+      <div class="success_message">
+      Password reset successful. You may now log in with your new password.
+      </div>
+      <router-link :to="{ name: 'user-login' }" >
+          Go to Login Page >>
+      </router-link>
+      </div>
+      
     </div>
   </div>
 </template>
@@ -64,6 +82,7 @@ export default {
       token: null,
       alert: {},
       isLoading: false,
+      formVisible: true
     };
   },
   validations: {
@@ -95,11 +114,7 @@ export default {
           })
           .then(() => {
             this.isLoading = false;
-            this.alert = {
-              style: "success",
-              message:
-                "Password reset successful. You may now log in with your new password."
-            };
+            this.formVisible = false;
           })
           .catch(err => {
             this.isLoading = false;
@@ -113,6 +128,10 @@ export default {
 </script>
 
 <style scoped>
+.success_message {
+  vertical-align: middle;
+  margin: 25px auto;
+}
 .form-card {
   width: 450px;
 }

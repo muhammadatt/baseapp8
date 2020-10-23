@@ -38,6 +38,10 @@ export default {
       //If auth is successful, send a request to make sure auth is working and get user details
       return dispatch('getUser')
     },
+    async getCookie () {
+      //Get CSRF cookie (Allow us to submit post request to Laravel endpoint)
+      await axios.get('/sanctum/csrf-cookie')
+    },
     /*
     async login({ dispatch }, credentials) {
       await axios.get("/sanctum/csrf-cookie").then( () => {
