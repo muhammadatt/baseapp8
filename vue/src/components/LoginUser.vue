@@ -15,7 +15,7 @@
             name="email"
             placeholder="Email Address"
             value
-          />  
+          />
 
           <input
             v-model="password"
@@ -62,38 +62,41 @@ export default {
       email: "",
       password: "",
       errors: [],
-      isLoading: false
+      isLoading: false,
     };
   },
   validations: {
     email: {
       required: true,
       isEmail: true,
-      maxLength: 255
+      maxLength: 255,
     },
     password: {
       required: true,
-      maxLength: 255
-    }
+      maxLength: 255,
+    },
   },
   methods: {
     async submit() {
       if (this.validateForm()) {
         this.isLoading = true;
         this.$store
-          .dispatch("auth/signIn", { email: this.email, password: this.password })
+          .dispatch("auth/signIn", {
+            email: this.email,
+            password: this.password,
+          })
           .then(() => {
             this.isLoading = false;
             this.$router.push({ name: "dashboard" });
           })
-          .catch(err => {
+          .catch((err) => {
             this.ConsoleLogApiErrors(err);
             this.errors = err.response.data.error;
             this.isLoading = false;
           });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Http\Requests\UserRequest;
+//use Illuminate\Foundation\Auth\AuthenticatesUsers;
+//use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -39,12 +39,14 @@ class AuthController extends Controller
         );  
     }
 
+    /*
     public function user(Request $request){
         if (Auth::user())
             return response()->json(['success' => true, 'user'=>Auth::user()], 200);
         else 
             return response()->json(['success'=> false, 'error'=>["message" => "User not logged in"]]);
     }
+    */
 
     public function register(Request $request)
     {
@@ -64,7 +66,7 @@ class AuthController extends Controller
         $user = User::create($input);
         Auth::login($user);
         
-        //For Passport we need to return the JWT token
+        //If using Passport, you will need to return the JWT token here
         //$success['token'] = $user->createToken('MyApp')->accessToken;
         //$success['name'] = $user->name;
         //$success['email'] = $user->email;

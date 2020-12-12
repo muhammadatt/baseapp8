@@ -2,7 +2,8 @@ export const FormValidator = {
   methods: {
     validateForm() {
       this.errors = [];
-
+      
+      // Define error message templates
       // {0} = field name; {1} comparison value for the given rule 
       var templates = {
         required: `{0} is required`,
@@ -65,32 +66,35 @@ export const FormValidator = {
       };
 
       for (const [field, rules] of Object.entries(this.$options.validations)) {
-        var subArray = [];
+        var fieldErrors = [];
         for (const [rule, value] of Object.entries(rules)) {
-          //Get user input from the given field
+
+          //Get user input from the given field & trim spaces
           let input = this[field].trim();
 
-          //Apply given validation rule; returns true if input is validated
-          let func = ruleset[rule].bind(this);
-          let valid = func(input, value);
+          //Apply specified validation rule; returns true if input is valid
+          let applyRule = ruleset[rule].bind(this);
+          let valid = applyRule(input, value);
 
+          //If validation fails, return error messages
           if (!valid) {
-            let template = templates[rule];
 
             //Construct error message from template
+            let template = templates[rule];
             let message = helpers.err_msg(
               template,
               helpers.capitalize(field),
               value
             );
             
-            subArray.push(message);
+            fieldErrors.push(message);
             
           }
           
         }
-        if (subArray.length) this.errors[field] = subArray;
-        
+        //
+        if (fieldErrors.length) this.errors[field] = fieldErrors;
+        console.log('type1: ' + typeof(fieldErrors) );
       }
 
       //Returns true if form contains no errors

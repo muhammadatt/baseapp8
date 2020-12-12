@@ -13,9 +13,7 @@
 </template>
 
 <script>
-import { myString } from "@/mixins/Mixins.js";
 export default {
-  mixins: [myString],
   data() {
     return {
       error: null
@@ -23,27 +21,34 @@ export default {
   },
   props: ["errors"],
   computed: {
-    /* Function to parse the error messages out of out the nested JSON result */
-
     error_list: function() {
       
       let errors = [];
       const values = Object.values(this.errors);
-      //console.log("errors: " + values)
 
       for (const messages of values) {
-        console.log('msg: ' + messages )
-        //Fix for error messages returned as comma separated string
+
+        //Split multiple error messages for same field onto separate lines
         let messages_array = this.myString(messages).split(",");
 
         for (const message of messages_array) {
           errors.push(message);
         }
+
       }
 
       return errors;
     }
+  },
+  methods: {
+    //toString throws an error on null values, this returns an empty string instead
+    myString: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value;
+    }
   }
+  
 };
 </script>
 
